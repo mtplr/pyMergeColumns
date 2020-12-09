@@ -7,6 +7,8 @@ A Python script to merge plain text formatted data column by column sequentially
 pyMergeColumns.py [-h] [--empty EMPTY] [--symbol SYMBOL] outputfile inputfiles [inputfiles ...]
 ```
 
+All lines beginning with `#` (comments) are skipped.
+
 ### Example
 
 ```

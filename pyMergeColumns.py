@@ -8,6 +8,8 @@ A Python script to merge plain text formatted data column by column sequentially
 
 usage: merge.py [-h] [--empty EMPTY] [--symbol SYMBOL] outputfile inputfiles [inputfiles ...]
 
+Lines beginning with '#' are skipped.
+
 Authors: Ludovico Pavesi, Matteo Paolieri, 2019
 
 License: MIT
@@ -26,15 +28,21 @@ def merge(output_file, input_files, empty_columns, symbol_delimiter):
     for data_file in input_files:
 
         with open(data_file) as file:
-            print(f"Reading:\n{os.path.basename(data_file)}")
-            rownum = 0
+            print(f"Read:\n{os.path.basename(data_file)}\n")
+
             data = csv.reader(file, delimiter=symbol_delimiter)
+
+            rownum = 0
+
             for row in data:
                 row: list
                 while '' in row:
                     row.remove('')
+                if row[0].startswith('#'):
+                    print(f"\tSkipped this comment:\n\t{' '.join(row)}")
+                    continue
                 if len(row) < 2:
-                    print(f"Skipped this line: {' '.join(row)}")
+                    print(f"\tSkipped this line:\n\t{' '.join(row)}")
                     continue
                 if len(rows) <= rownum:
                     rows.append([])

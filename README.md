@@ -1,27 +1,33 @@
 # pyMergeColumns
-A Python script to merge plain text formatted data column by column sequentially into one file.
+A Python script to merge plain text formatted data column by column sequentially into one file. It needs `pandas`.
 
 ## Usage
 
 ```
-pyMergeColumns.py [-h] [--empty EMPTY] [--symbol SYMBOL] outputfile inputfiles [inputfiles ...]
-```
+pyMergeColumns.py [-h] [-o OUTPUT] [-i INPUT [INPUT ...]] [-s SYMBOL]
 
-All lines beginning with `#` (comments) are skipped.
+Merge data files.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -o OUTPUT, --output OUTPUT
+                        Output file name (remember to write extension!)
+  -i INPUT [INPUT ...], --input INPUT [INPUT ...]
+                        Input file names
+  -s SYMBOL, --symbol SYMBOL
+                        Symbol used as delimiter. Default is tab ' '. Can be used: , . '
+                        ' etc.
+```
 
 ### Example
 
 ```
-pyMergeColumns.py --empty 3 --symbol "," output.txt "file1" "file2" "file3"
+pyMergeColumns.py -s "," -o output.txt -i "file1.txt" "~/docs/file2.txt" "file3"
 ```
 
-* `--empty 3` add 3 empty columns between the ones merged
-* `--symbol ","` use a comma delimiter instead of the default one (`\t`, tab)
-* `"file1" "file2" "file3"` as input file: list of files to be merged (here three in the example)
-* `output.txt` as output file: name of output. Extension is not mandatory
 
 # License
-(c) Ludovico Pavesi, Matteo Paolieri 2019
+(c) Matteo Paolieri 2021
 
 License: MIT
 

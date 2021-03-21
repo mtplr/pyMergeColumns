@@ -15,8 +15,8 @@ optional arguments:
   -i INPUT [INPUT ...], --input INPUT [INPUT ...]
                         Input file names
   -s SYMBOL, --symbol SYMBOL
-                        Symbol used as delimiter. Default is tab ' '. Can be used: , . '
-                        ' etc.
+                        Symbol used as delimiter. Default is tab '\t'. 
+                        Can be used: , . ' ' etc.
 ```
 
 ### Example
